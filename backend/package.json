@@ -1,0 +1,26 @@
+{
+  "name": "netflix_clone",
+  "version": "1.0.0",
+  "description": "Netflix Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvinjohnson747/Netflix_Clone.git"
+  },
+  "author": "Calvin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calvinjohnson747/Netflix_Clone/issues"
+  },
+  "homepage": "https://github.com/calvinjohnson747/Netflix_Clone#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
