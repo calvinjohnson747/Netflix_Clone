@@ -42,7 +42,51 @@ const login = (req,res)=>{
     });
 };
 
+const signup = async(req, res)=>{
+    const userid = req.params.userid;
+    const password = req.params.password;
+
+    const isAvailable = await verify(userid);
+    if(isAvailable){
+        const query = 'INSERT INTO users (userid, password) VALUES (?, ?)'
+
+        db.execute(query,[userid,password],(err,result)=>{
+            if (err) {
+                console.error('Error executing query:', err);
+                return res.status(500).json({ error: 'Database error' });
+            }
+            else {
+                console.log('Inserted new user:', userid);
+                res.status(200).json({ message: 'Insert successful',user:result[0] });
+            }
+        })
+    }else {
+        res.status(400).json({ error: 'Username unavailable, try another username' });
+    }
+}
+
+function verify(userid){
+    return new Promise((resolve,reject)=>{
+        const query = 'SELECT * FROM users WHERE userid=?'
+    db.execute(query, [userid], (err,result)=>{
+        if(err){
+            console.error('Error executing query',err);
+            reject(false);
+        }
+        if(result.length>0){
+            console.log('Username unavailable, try another username');
+            resolve(false);
+        }
+        else{
+            console.log('Username available');
+            resolve(true);
+            }
+        });
+    }); 
+};
+
 module.exports ={
-    login
+    login,
+    signup
 }
   
