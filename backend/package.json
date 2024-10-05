@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/calvinjohnson747/Netflix_Clone#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "mysql2": "^3.11.3"
   },
